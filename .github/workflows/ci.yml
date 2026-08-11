@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: archlinux:latest
+    steps:
+      - name: Install build tooling
+        shell: bash
+        run: |
+          set -euo pipefail
+          pacman -Syu --noconfirm --needed base-devel sudo namcap
+          useradd --create-home builder
+          printf 'builder ALL=(ALL:ALL) NOPASSWD: ALL\n' >/etc/sudoers.d/builder
+          chmod 0440 /etc/sudoers.d/builder
+          chown -R builder:builder "$GITHUB_WORKSPACE"
+
+      - name: Verify SRCINFO
+        shell: bash
+        run: |
+          set -euo pipefail
+          su builder -c "cd '$GITHUB_WORKSPACE' && makepkg --printsrcinfo > .SRCINFO.generated"
+          diff -u "$GITHUB_WORKSPACE/.SRCINFO" "$GITHUB_WORKSPACE/.SRCINFO.generated"
+
+      - name: Build package
+        shell: bash
+        run: |
+          set -euo pipefail
+          su builder -c "cd '$GITHUB_WORKSPACE' && makepkg --syncdeps --noconfirm --cleanbuild --clean"
+
+      - name: Inspect package
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE"
+          pkg="$(find . -maxdepth 1 -name '*.pkg.tar.zst' -print -quit)"
+          test -n "$pkg"
+          namcap PKGBUILD || true
+          namcap "$pkg" || true
+          bsdtar -tf "$pkg" | grep -E '^usr/(bin/chatgpt|lib/chatgpt/ChatGPT|share/applications/chatgpt.desktop)$'
