@@ -7,6 +7,7 @@ pkgdesc='Official ChatGPT desktop app for Linux'
 arch=('x86_64')
 url='https://chatgpt.com/'
 license=('custom')
+options=('!strip' '!debug')
 depends=(
   'alsa-lib'
   'at-spi2-core'
@@ -44,7 +45,7 @@ optdepends=('apparmor: load the upstream ChatGPT AppArmor profile')
 provides=('chatgpt')
 conflicts=('chatgpt')
 source_x86_64=(
-  "chatgpt-${pkgver}-${pkgrel}.x86_64.rpm::https://persistent.oaistatic.com/codex-app-prod/linux/rpm/latest/chatgpt.x86_64.rpm"
+  "chatgpt-${pkgver}-${pkgrel}.${CARCH}.rpm::https://persistent.oaistatic.com/codex-app-prod/linux/rpm/latest/chatgpt.x86_64.rpm"
 )
 sha256sums_x86_64=('4d34fd4bb1122b7f2445f6a1bbc7c869cd3724c9f71aee3802795272c0b10702')
 
