@@ -2,7 +2,7 @@
 
 pkgname=chatgpt-desktop
 pkgver=26.803.81509
-pkgrel=1
+pkgrel=2
 pkgdesc='Official ChatGPT desktop app for Linux'
 arch=('x86_64')
 url='https://chatgpt.com/'
@@ -23,6 +23,7 @@ depends=(
   'libdrm'
   'libglvnd'
   'libnotify'
+  'libpulse'
   'libusb'
   'libx11'
   'libxcb'
@@ -41,11 +42,15 @@ depends=(
   'xdg-utils'
   'xz'
 )
-optdepends=('apparmor: load the upstream ChatGPT AppArmor profile')
+optdepends=(
+  'apparmor: load the upstream ChatGPT AppArmor profile'
+  'pipewire-pulse: microphone/Voice input through PipeWire'
+  'pulseaudio: microphone/Voice input through PulseAudio'
+)
 provides=('chatgpt')
 conflicts=('chatgpt')
 source_x86_64=(
-  "chatgpt-${pkgver}-${pkgrel}.${CARCH}.rpm::https://persistent.oaistatic.com/codex-app-prod/linux/rpm/latest/chatgpt.x86_64.rpm"
+  "chatgpt-${pkgver}-1.${CARCH}.rpm::https://persistent.oaistatic.com/codex-app-prod/linux/rpm/latest/chatgpt.x86_64.rpm"
 )
 sha256sums_x86_64=('4d34fd4bb1122b7f2445f6a1bbc7c869cd3724c9f71aee3802795272c0b10702')
 
