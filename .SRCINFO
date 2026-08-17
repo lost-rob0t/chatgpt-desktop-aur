@@ -1,7 +1,7 @@
 pkgbase = chatgpt-desktop
 	pkgdesc = Official ChatGPT desktop app for Linux
-	pkgver = 26.803.81509
-	pkgrel = 2
+	pkgver = 26.810.52044
+	pkgrel = 1
 	url = https://chatgpt.com/
 	arch = x86_64
 	license = custom
@@ -44,7 +44,7 @@ pkgbase = chatgpt-desktop
 	conflicts = chatgpt
 	options = !strip
 	options = !debug
-	source_x86_64 = chatgpt-26.803.81509-1.x86_64.rpm::https://persistent.oaistatic.com/codex-app-prod/linux/rpm/latest/chatgpt.x86_64.rpm
-	sha256sums_x86_64 = 4d34fd4bb1122b7f2445f6a1bbc7c869cd3724c9f71aee3802795272c0b10702
+	source_x86_64 = chatgpt-26.810.52044-1.x86_64.rpm::https://persistent.oaistatic.com/codex-app-prod/linux/rpm/latest/chatgpt.x86_64.rpm
+	sha256sums_x86_64 = 73454718ef822acfb4eae6644d55ff22cbe2c405062cf957f223d54c7959bd6c
 
 pkgname = chatgpt-desktop
