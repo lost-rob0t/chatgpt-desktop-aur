@@ -2,7 +2,7 @@
 
 pkgname=chatgpt-desktop
 pkgver=26.810.52044
-pkgrel=1
+pkgrel=2
 pkgdesc='Official ChatGPT desktop app for Linux'
 arch=('x86_64')
 url='https://chatgpt.com/'
