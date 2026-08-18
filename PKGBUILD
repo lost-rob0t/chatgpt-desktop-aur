@@ -59,8 +59,8 @@ package() {
   cp -a "$srcdir/usr/bin/chatgpt" "$pkgdir/usr/bin/"
   cp -a "$srcdir/usr/lib/chatgpt" "$pkgdir/usr/lib/"
   cp -a "$srcdir/usr/share/applications" "$pkgdir/usr/share/"
-  cp -a "$srcdir/usr/share/pixmaps" "$pkgdir/usr/share/pixmaps"
-  cp -a "$srcdir/usr/share/doc" "$pkgdir/usr/share/doc"
+  cp -a "$srcdir/usr/share/pixmaps" "$pkgdir/usr/share/"
+  cp -a "$srcdir/usr/share/doc" "$pkgdir/usr/share/"
 
   if [[ -f "$srcdir/etc/apparmor.d/chatgpt" ]]; then
     install -Dm644 "$srcdir/etc/apparmor.d/chatgpt" \
