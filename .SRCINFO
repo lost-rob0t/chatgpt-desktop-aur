@@ -1,7 +1,7 @@
 pkgbase = chatgpt-desktop
 	pkgdesc = Official ChatGPT desktop app for Linux
 	pkgver = 26.810.52044
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chatgpt.com/
 	arch = x86_64
 	license = custom
