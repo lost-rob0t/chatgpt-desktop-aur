@@ -52,15 +52,15 @@ conflicts=('chatgpt')
 source_x86_64=(
   "chatgpt-${pkgver}-1.${CARCH}.rpm::https://persistent.oaistatic.com/codex-app-prod/linux/rpm/latest/chatgpt.x86_64.rpm"
 )
-sha256sums_x86_64=('73454718ef822acfb4eae6644d55ff22cbe2c405062cf957f223d54c7959bd6c')
+sha256sums_x86_64=('ea195532e23491a0a2cd57561d993dfc3c9b265f4ad113af3abdae019b5c969e')
 
 package() {
   install -d "$pkgdir/usr/bin" "$pkgdir/usr/lib" "$pkgdir/usr/share"
   cp -a "$srcdir/usr/bin/chatgpt" "$pkgdir/usr/bin/"
   cp -a "$srcdir/usr/lib/chatgpt" "$pkgdir/usr/lib/"
   cp -a "$srcdir/usr/share/applications" "$pkgdir/usr/share/"
-  cp -a "$srcdir/usr/share/pixmaps" "$pkgdir/usr/share/"
-  cp -a "$srcdir/usr/share/doc" "$pkgdir/usr/share/"
+  cp -a "$srcdir/usr/share/pixmaps" "$pkgdir/usr/share/pixmaps"
+  cp -a "$srcdir/usr/share/doc" "$pkgdir/usr/share/doc"
 
   if [[ -f "$srcdir/etc/apparmor.d/chatgpt" ]]; then
     install -Dm644 "$srcdir/etc/apparmor.d/chatgpt" \
